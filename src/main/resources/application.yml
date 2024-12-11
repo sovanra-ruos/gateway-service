@@ -7,7 +7,7 @@ spring:
       client:
         provider:
           devops:
-            issuer-uri: http://localhost:8080
+            issuer-uri: https://identity-service.psa-khmer.world/
         registration:
           devops:
             provider: devops
@@ -16,7 +16,7 @@ spring:
             authorization-grant-type:
               - authorization_code
             scope: openid, profile
-            redirect-uri: http://localhost:8081/login/oauth2/code/devops
+            redirect-uri: http://gateway:8081/login/oauth2/code/devops
 
   cloud:
     gateway:
@@ -29,7 +29,7 @@ spring:
         - SaveSession
       routes:
         - id: identity
-          uri: http://localhost:8080
+          uri: https://identity-service.psa-khmer.world/
           predicates:
             - Path=/identity/**
           filters:
